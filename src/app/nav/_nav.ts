@@ -89,12 +89,11 @@ export const navItems: NavegacionModel[] = [
   },
 
   {
-    name: "Primer Crud",
+    name: "Crud de prueba",
     url: 'primer_crud', //URL que mostrará la vista
     icon: 'icon-home',
     permiso: PRUEBA_PERMISOS,
   }
-
 ];
 
 
@@ -160,7 +159,7 @@ export const routesNav: Routes = [
     loadChildren: () => import('../pages/infraestructura/infraestructura.module').then(m => m.InfraestructuraModule)
   },
   {
-    path:'pruebas',
+    path:'primer_crud',
     loadChildren:() => import('../pages/prueba/prueba.module').then(m => m.PruebaModule)
   }
 

@@ -17,9 +17,6 @@ export class TipoTransaccionService {
     return this._coreService.get<TipoTransaccionModel[]>('tipo_transacciones');
   }
 
-
-
-
   crearTipo_transaccion(tipo_transaccion: TipoTransaccionModel) {
 
     tipo_transaccion.detalle = tipo_transaccion.detalle.toUpperCase();

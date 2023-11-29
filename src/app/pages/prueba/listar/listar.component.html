@@ -1,0 +1,45 @@
+<div class="container">
+    <div>
+        <button class="btn bg-info btn-sm mb-1" (click)="refrescar()">
+            refrescar <i class="fa-solid fa-rotate-right"></i>
+        </button>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th class="bg-info-subtle text-center">ID</th>
+                <th class="bg-info-subtle text-center">Descripción</th>
+                <th class="bg-info-subtle text-center">Fecha</th>
+                <th class="bg-info-subtle text-center">Opciones</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr *ngFor="let crud of cruds | paginate: { itemsPerPage: this.numReg, currentPage: currentPage }">
+                <th>{{ crud.id }}</th>
+                <td>{{ crud.descripcion }}</td>
+                <td>{{ crud.fecha }}</td>
+                <!-- opciones -->
+                <td class="d-flex justify-content-around">
+                    <button class="btn btn-warning" (click)="actualizar(crud)">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                    <button class="btn btn-danger"
+                        [swal]="{ title: '¿Desea eliminar este crud, ID: '+crud.id+'?',  showCancelButton: true }"
+                        (confirm)="eliminar(crud.id)">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-between">
+        <button class="btn bg-success" (click)="agregar()">
+            Agregar <i class="fa-solid fa-plus"></i>
+        </button>
+        <ul class="m-0">
+            <span>
+                <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+            </span>
+        </ul>
+    </div>
+</div>

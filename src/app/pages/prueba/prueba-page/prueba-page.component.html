@@ -1,1 +1,38 @@
-<p>prueba-page works!</p>
+<div class="card">
+    <div class="card-header">
+        <h1>CRUD DE PRUEBA</h1>
+    </div>
+    <div class="card-body">
+        <app-listar 
+        [cruds]="cruds"
+        (create)="showModalAdd()"
+        (update)="showModalEdit($event)"
+        (delete)="eliminarCrud($event)"
+        (refresh)="getCrud()"
+        >
+
+        </app-listar>
+        <app-custom-modal title="Agregar crud" [(show)]="modalAddShown">
+            <app-add
+            *ngIf="modalAddShown"
+            (cancel)="reset()"
+            (data)="addCrud($event)"
+            >
+
+            </app-add>
+
+        </app-custom-modal>
+        <app-custom-modal title="Editar crud" [(show)]="modalEditShown">
+            <app-edit
+            *ngIf="modalEditShown"
+            [crud]="crud"
+            (cancel)="reset()"
+            (data)="actualizarCrud($event)"
+            >
+
+            </app-edit>
+
+        </app-custom-modal>
+    </div>
+</div>
+<div>

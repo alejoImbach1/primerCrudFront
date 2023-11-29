@@ -33,7 +33,6 @@ export class AddTipoTransaccionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.setTipoT()
   }
 
